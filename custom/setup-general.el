@@ -58,5 +58,6 @@
 ;; activate whitespace-mode to view all whitespace characters
 (global-set-key (kbd "C-c w") 'whitespace-mode)
 (windmove-default-keybindings)
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
 (provide 'setup-general)

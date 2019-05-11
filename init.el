@@ -48,7 +48,7 @@
  ;; If there is more than one, they won't work right.
  '(org-agenda-files
    (quote
-    ("~/workspace/org/gtd.org" "~/workspace/org/할일.org")))
+    ("~/Dropbox/org/gtd.org")))
  '(package-selected-packages
    (quote
     (which-key function-args ggtags cyberpunk-2019-theme cyberpunk-theme zygospore helm-gtags helm yasnippet ws-butler volatile-highlights use-package undo-tree iedit dtrt-indent counsel-projectile company clean-aindent-mode anzu))))

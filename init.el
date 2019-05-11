@@ -1,7 +1,7 @@
 (require 'package)
 (add-to-list 'package-archives
-             ;;'("melpa" . "http://melpa.org/packages/") t)
-             '("melpa" . "https://stable.melpa.org/packages/") t)
+             '("melpa" . "http://melpa.org/packages/") t)
+             ;;'("melpa" . "https://stable.melpa.org/packages/") t)
 
 (package-initialize)
 
@@ -27,6 +27,12 @@
 (require 'setup-cedet)
 (require 'setup-editing)
 (require 'setup-speedbar)
+(load-file "~/.emacs.d/custom/setup-org.el")
+
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cc" 'org-capture)
+(global-set-key "\C-cb" 'org-switchb)
 
 (load-theme 'cyberpunk t)
 
@@ -40,9 +46,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(org-agenda-files
+   (quote
+    ("~/workspace/org/gtd.org" "~/workspace/org/할일.org")))
  '(package-selected-packages
    (quote
-    (function-args ggtags cyberpunk-2019-theme cyberpunk-theme zygospore helm-gtags helm yasnippet ws-butler volatile-highlights use-package undo-tree iedit dtrt-indent counsel-projectile company clean-aindent-mode anzu))))
+    (which-key function-args ggtags cyberpunk-2019-theme cyberpunk-theme zygospore helm-gtags helm yasnippet ws-butler volatile-highlights use-package undo-tree iedit dtrt-indent counsel-projectile company clean-aindent-mode anzu))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

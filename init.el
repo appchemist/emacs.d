@@ -27,6 +27,12 @@
 (require 'setup-cedet)
 (require 'setup-editing)
 (require 'setup-speedbar)
+(require 'ox-latex)
+
+(setq org-latex-listings t)
+(add-to-list 'org-latex-packages-alist '("" "listings"))
+(add-to-list 'org-latex-packages-alist '("" "color"))
+
 (load-file "~/.emacs.d/custom/setup-org.el")
 
 (global-set-key "\C-cl" 'org-store-link)
@@ -46,12 +52,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-agenda-files
-   (quote
-    ("~/Dropbox/org/gtd.org")))
+ '(org-agenda-files (quote ("~/Dropbox/org/gtd.org")))
  '(package-selected-packages
    (quote
-    (which-key function-args ggtags cyberpunk-2019-theme cyberpunk-theme zygospore helm-gtags helm yasnippet ws-butler volatile-highlights use-package undo-tree iedit dtrt-indent counsel-projectile company clean-aindent-mode anzu))))
+    (latex-extra auctex which-key function-args ggtags cyberpunk-2019-theme cyberpunk-theme zygospore helm-gtags helm yasnippet ws-butler volatile-highlights use-package undo-tree iedit dtrt-indent counsel-projectile company clean-aindent-mode anzu))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

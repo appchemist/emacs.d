@@ -1,8 +1,14 @@
 (require 'package)
 (add-to-list 'package-archives
-             '("melpa" . "http://melpa.org/packages/") t)
-             ;;'("melpa" . "https://stable.melpa.org/packages/") t)
+             '(
+		("melpa" . "http://melpa.org/packages/")
+             ;;("melpa" . "https://stable.melpa.org/packages/")
+		("gnu" . "https://elpa.gnu.org/packages/")
+		("org" . "http://orgmode.org/elpa/")))
 
+;;(setq package-archives '(("gnu" . "http://mirrors.163.com/elpa/gnu/")
+;;                         ("melpa" . "https://melpa.org/packages/")
+;;                         ("org" . "http://orgmode.org/elpa/")))
 (package-initialize)
 
 (when (not package-archive-contents)

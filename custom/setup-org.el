@@ -1,4 +1,4 @@
-(setq org-directory "~/Dropbox/org/gtd")
+(setq org-directory "~/Dropbox/org")
 (setq org-default-notes-file (concat org-directory "refile.org"))
 
 ;; I use C-c c to start capture mode
@@ -33,7 +33,7 @@
 
 (defun open-my-org ()
   (interactive)
-  (find-file (concat org-directory "gtd/gtd.org")))
+  (find-file (concat org-directory "/gtd/gtd.org")))
 
 ;;;;;;;;;;;;;;;;;;;;;
 ;; plantuml config ;;

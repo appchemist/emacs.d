@@ -63,3 +63,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; end of plantuml config ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; pandoc 때문에 경로 추가
+;; pandoc 패키지 설치 필요
+;; mac의 경우 - brew install pandoc
+(add-to-list 'exec-path "/usr/local/bin")

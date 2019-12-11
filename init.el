@@ -39,6 +39,8 @@
 (require 'setup-editing)
 (require 'setup-speedbar)
 (require 'ox-latex)
+;; ox-confluence git에서 코드를 가져옴
+(require 'ox-confluence)
 
 (setq org-latex-listings t)
 (add-to-list 'org-latex-packages-alist '("" "listings"))

@@ -34,3 +34,32 @@
 (defun open-my-org ()
   (interactive)
   (find-file (concat org-directory "gtd/gtd.org")))
+
+;;;;;;;;;;;;;;;;;;;;;
+;; plantuml config ;;
+;;;;;;;;;;;;;;;;;;;;;
+;; image
+(setq org-startup-with-inline-images t)
+
+;; plantuml 설정
+;; class diagram을 출력하기 위해서는 graphviz를 설치해야 한다.
+;; mac의 경우 - brew install graphviz
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '(;; other Babel languages
+   (plantuml . t)))
+
+(setq org-confirm-babel-evaluate nil)
+(setq org-plantuml-jar-path
+      (expand-file-name "~/.emacs.d/custom/package/plantuml.jar"))
+(add-hook 'org-babel-after-execute-hook
+          (lambda ()
+            (when org-inline-image-overlays
+              (org-redisplay-inline-images))))
+(add-to-list 'org-structure-template-alist
+             '("u" "#+BEGIN_SRC plantuml :file ?.png
+\nskinparam monochrome true
+\n#+END_SRC"))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; end of plantuml config ;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;

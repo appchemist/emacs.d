@@ -11,7 +11,7 @@
 ;;                         ("melpa" . "https://melpa.org/packages/")
 ;;                         ("org" . "http://orgmode.org/elpa/")))
 
-;; secondary packages archives
+;; for pandoc packages archives
 ;; (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
 ;;                          ("melpa" . "http://melpa.milkbox.net/packages/")
 ;;                          ("org" . "http://orgmode.org/elpa/")))
@@ -74,6 +74,9 @@
  ;; If there is more than one, they won't work right.
  )
 
-(setenv "PATH" (concat "/Library/TeX/texbin/" ":"
-                       "/usr/local/bin/" ":"
-                       (getenv "PATH")))
+(setenv "PATH"
+        (concat
+                ;; latex 위치를 못 찾을 경우 해당 경로를 지정
+                "/Library/TeX/texbin/" ":"
+                "/usr/local/bin/" ":"
+                (getenv "PATH")))

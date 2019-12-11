@@ -1,18 +1,23 @@
 (require 'package)
+;; default package archives
 (add-to-list 'package-archives
-             '(
-		("melpa" . "http://melpa.org/packages/")
-             ;;("melpa" . "https://stable.melpa.org/packages/")
-		("gnu" . "https://elpa.gnu.org/packages/")
-		("org" . "http://orgmode.org/elpa/")))
+             '(("melpa" . "http://melpa.org/packages/")
+               ("melpa-stable" . "https://stable.melpa.org/packages/")
+               ("gnu" . "https://elpa.gnu.org/packages/")
+               ("org" . "http://orgmode.org/elpa/")))
 
+;; mac os default package archives
 ;;(setq package-archives '(("gnu" . "http://mirrors.163.com/elpa/gnu/")
 ;;                         ("melpa" . "https://melpa.org/packages/")
 ;;                         ("org" . "http://orgmode.org/elpa/")))
+
+;; secondary packages archives
+;; (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+;;                          ("melpa" . "http://melpa.milkbox.net/packages/")
+;;                          ("org" . "http://orgmode.org/elpa/")))
 (package-initialize)
 
-(when (not package-archive-contents)
-    (package-refresh-contents))
+(package-refresh-contents)
 
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
@@ -58,7 +63,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-agenda-files (quote ("~/Dropbox/org/gtd.org")))
+ '(org-agenda-files (quote ("~/Dropbox/org/gtd")))
  '(package-selected-packages
    (quote
     (latex-extra auctex which-key function-args ggtags cyberpunk-2019-theme cyberpunk-theme zygospore helm-gtags helm yasnippet ws-butler volatile-highlights use-package undo-tree iedit dtrt-indent counsel-projectile company clean-aindent-mode anzu))))
@@ -68,3 +73,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+(setenv "PATH" (concat "/Library/TeX/texbin/" ":"
+                       "/usr/local/bin/" ":"
+                       (getenv "PATH")))

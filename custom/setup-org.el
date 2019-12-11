@@ -1,4 +1,4 @@
-(setq org-directory "~/Dropbox/org/")
+(setq org-directory "~/Dropbox/org/gtd")
 (setq org-default-notes-file (concat org-directory "refile.org"))
 
 ;; I use C-c c to start capture mode
@@ -6,11 +6,11 @@
 
 ;; Capture templates for: TODO tasks, Notes, appointments, phone calls, meetings, and org-protocol
 (setq org-capture-templates
-      (quote (("s" "new SURF todo" entry (file+headline "~/Dropbox/org/gtd.org" "New SURF")
+      (quote (("w" "Wadiz todo" entry (file+headline "~/Dropbox/org/gtd/gtd.org" "Wadiz")
                "* TODO %?\n" :clock-in t :clock-resume t)
-              ("t" "할일 todo" entry (file+headline "~/Dropbox/org/gtd.org" "할일 리스트")
+              ("t" "할일 todo" entry (file+headline "~/Dropbox/org/gtd/appchemist.org" "할일 리스트")
                "* TODO %?\n" :clock-in t :clock-resume t)
-              ("c" "Study CS" entry (file+headline "~/Dropbox/org/gtd.org" "Study CS")
+              ("c" "Study CS" entry (file+headline "~/Dropbox/org/gtd/appchemist.org" "Study CS")
                "* STUDY %?\n")
               ;; ("r" "respond" entry (file "~/Dropbox/org/refile.org")
               ;;  "* NEXT Respond to %:from on %:subject\nSCHEDULED: %t\n%U\n%a\n" :clock-in t :clock-resume t :immediate-finish t)
@@ -33,4 +33,4 @@
 
 (defun open-my-org ()
   (interactive)
-  (find-file (concat org-directory "gtd.org")))
+  (find-file (concat org-directory "gtd/gtd.org")))

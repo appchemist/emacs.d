@@ -35,6 +35,31 @@
   (interactive)
   (find-file (concat org-directory "/gtd/gtd.org")))
 
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '(
+   (awk . t)
+   (calc .t)
+   (C . t)
+   (emacs-lisp . t)
+   (haskell . t)
+   (gnuplot . t)
+   (latex . t)
+   ;;(ledger . t)
+   (js . t)
+   (haskell . t)
+   ;;(http . t)
+   (perl . t)
+   (python . t)
+   ;; (gnuplot . t)
+   ;; org-babel does not currently support php.  That is really sad.
+   ;;(php . t)
+   (R . t)
+   (scheme . t)
+   (shell . t)
+   (sql . t)
+   ;;(sqlite . t)
+   ))
 ;;;;;;;;;;;;;;;;;;;;;
 ;; plantuml config ;;
 ;;;;;;;;;;;;;;;;;;;;;
@@ -51,7 +76,9 @@
 
 (setq org-confirm-babel-evaluate nil)
 (setq org-plantuml-jar-path
-      (expand-file-name "~/.emacs.d/custom/package/plantuml.jar"))
+      (expand-file-name
+       ;; plantuml 설치 위치 지정
+       "~/.emacs.d/custom/package/plantuml.jar"))
 (add-hook 'org-babel-after-execute-hook
           (lambda ()
             (when org-inline-image-overlays

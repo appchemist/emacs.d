@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: org mode plantuml template
+# key: orguml
+# --
+#+BEGIN_SRC plantuml :file $1.png
+$2
+#+END_SRC

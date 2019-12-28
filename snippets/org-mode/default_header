@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: org mode default header
+# key: orgdefheader
+# --
+#+LATEX_HEADER: \usepackage{kotex}
+#+TITLE: $0

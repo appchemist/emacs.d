@@ -32,9 +32,9 @@
 (require 'setup-general)
 (if (version< emacs-version "24.4")
     (require 'setup-ivy-counsel)
-  (require 'setup-helm)
   (require 'setup-helm-gtags))
 ;; (require 'setup-ggtags)
+(require 'setup-helm)
 (require 'setup-cedet)
 (require 'setup-editing)
 (require 'setup-speedbar)
@@ -70,7 +70,7 @@
  '(org-agenda-files (quote ("~/Dropbox/org/gtd")))
  '(package-selected-packages
    (quote
-    (projectile doom-themes smart-mode-line htmlize ox-pandoc latex-extra auctex which-key function-args ggtags cyberpunk-2019-theme cyberpunk-theme zygospore helm-gtags helm yasnippet ws-butler volatile-highlights use-package undo-tree iedit dtrt-indent counsel-projectile company clean-aindent-mode anzu))))
+    (helm-ag ivy eyebrowse projectile doom-themes smart-mode-line htmlize ox-pandoc latex-extra auctex which-key function-args ggtags cyberpunk-2019-theme cyberpunk-theme zygospore helm-gtags helm yasnippet ws-butler volatile-highlights use-package undo-tree iedit dtrt-indent counsel-projectile company clean-aindent-mode anzu))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -1,5 +1,7 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
+(which-key-mode 1)
+(eyebrowse-mode 1)
 
 (setq gc-cons-threshold 100000000)
 (setq inhibit-startup-message t)
@@ -40,13 +42,6 @@
 ;; (define-key c-mode-map  [(control tab)] 'company-complete)
 ;; (define-key c++-mode-map  [(control tab)] 'company-complete)
 
-;; Package: projejctile
-(use-package projectile
-  :init
-  (projectile-global-mode)
-  (setq projectile-enable-caching t)
-  (setq projectile-completion-system 'helm)
-  (helm-projectile-on))
 
 ;; Package zygospore
 (use-package zygospore

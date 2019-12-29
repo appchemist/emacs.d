@@ -110,7 +110,7 @@
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;; Locate the helm-swoop folder to your path
     (use-package helm-swoop
-      :bind (("C-c h o" . helm-swoop)
+      :bind (("s-s" . helm-swoop)
              ("C-c s" . helm-multi-swoop-all))
       :config
       ;; When doing isearch, hand the word over to helm-swoop

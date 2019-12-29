@@ -78,7 +78,7 @@
 (setq org-plantuml-jar-path
       (expand-file-name
        ;; plantuml 설치 위치 지정
-       "~/.emacs.d/custom/package/plantuml.jar"))
+       "/usr/local/Cellar/plantuml/1.2019.13/libexec/plantuml.jar"))
 (add-hook 'org-babel-after-execute-hook
           (lambda ()
             (when org-inline-image-overlays

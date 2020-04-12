@@ -4,9 +4,16 @@
 ;; I use C-c c to start capture mode
 (global-set-key (kbd "C-c c") 'org-capture)
 
+;; (global-set-key (kbd "C-c i") 'org-clock-in)
+;; (global-set-key (kbd "C-c o") 'org-clock-out)
+
 ;; Capture templates for: TODO tasks, Notes, appointments, phone calls, meetings, and org-protocol
 (setq org-capture-templates
       (quote (("w" "Wadiz todo" entry (file+headline "~/Dropbox/org/gtd/gtd.org" "Wadiz")
+               "* TODO %?\n" :clock-in t :clock-resume t)
+              ("i" "Wadiz Issue todo" entry (file+headline "~/Dropbox/org/gtd/gtd.org" "Wadiz Issue")
+               "* TODO %?\n" :clock-in t :clock-resume t)
+              ("e" "Wadiz Etc todo" entry (file+headline "~/Dropbox/org/gtd/gtd.org" "Wadiz Etc")
                "* TODO %?\n" :clock-in t :clock-resume t)
               ("t" "할일 todo" entry (file+headline "~/Dropbox/org/gtd/appchemist.org" "할일 리스트")
                "* TODO %?\n" :clock-in t :clock-resume t)
@@ -29,7 +36,11 @@
               ;; EPEAT_TO_STATE: NEXT\n:END:\n"))))
               )))
 
-(setq org-refile-targets '((org-agenda-files :maxlevel . 1)))
+(setq org-refile-targets
+      '((nil :maxlevel . 9)
+        (org-agenda-files :maxlevel . 9)))
+(setq org-outline-path-complete-in-steps nil)
+(setq org-refile-use-outline-path t)
 
 (defun open-my-org ()
   (interactive)
@@ -58,8 +69,17 @@
    (scheme . t)
    (shell . t)
    (sql . t)
+   (plantuml . t)
    ;;(sqlite . t)
    ))
+
+;;;;;;;;;;;;;;;;;;;;;;;
+;; org bullet config ;;
+;;;;;;;;;;;;;;;;;;;;;;;
+(require 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+;;;;;;;;;;;;;;;;;;;;;;;
+
 ;;;;;;;;;;;;;;;;;;;;;
 ;; plantuml config ;;
 ;;;;;;;;;;;;;;;;;;;;;
@@ -69,11 +89,6 @@
 ;; plantuml 설정
 ;; class diagram을 출력하기 위해서는 graphviz를 설치해야 한다.
 ;; mac의 경우 - brew install graphviz
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '(;; other Babel languages
-   (plantuml . t)))
-
 (setq org-confirm-babel-evaluate nil)
 (setq org-plantuml-jar-path
       (expand-file-name

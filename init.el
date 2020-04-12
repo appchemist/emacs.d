@@ -1,10 +1,10 @@
 (require 'package)
 ;; default package archives
-(add-to-list 'package-archives
-            '(("melpa" . "http://melpa.org/packages/")
-              ("melpa-stable" . "https://stable.melpa.org/packages/")
-              ("gnu" . "https://elpa.gnu.org/packages/")
-              ("org" . "http://orgmode.org/elpa/")))
+;; (add-to-list 'package-archives
+;;             '(("melpa" . "http://melpa.org/packages/")
+;;               ("melpa-stable" . "https://stable.melpa.org/packages/")
+;;               ("gnu" . "https://elpa.gnu.org/packages/")
+;;               ("org" . "http://orgmode.org/elpa/")))
 
 ;; mac os default package archives
 ;;(setq package-archives '(("gnu" . "http://mirrors.163.com/elpa/gnu/")
@@ -12,9 +12,9 @@
 ;;                         ("org" . "http://orgmode.org/elpa/")))
 
 ;; for pandoc packages archives
- ;; (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
- ;;                          ("melpa" . "http://melpa.milkbox.net/packages/")
- ;;                          ("org" . "http://orgmode.org/elpa/")))
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ("melpa" . "http://melpa.milkbox.net/packages/")
+                         ("org" . "http://orgmode.org/elpa/")))
 (package-initialize)
 
 (package-refresh-contents)
@@ -67,10 +67,12 @@
  '(custom-safe-themes
    (quote
     ("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default)))
- '(org-agenda-files (quote ("~/Dropbox/org/gtd")))
+ '(org-agenda-files
+   (quote
+    ("/Users/gyeongwon.do/Dropbox/org/gtd/gtd.org" "/Users/gyeongwon.do/Dropbox/org/gtd/appchemist.org" "/Users/gyeongwon.do/Dropbox/org/gtd/complete.org" "/Users/gyeongwon.do/Dropbox/org/gtd/config_gtd.org")))
  '(package-selected-packages
    (quote
-    (helm-ag ivy eyebrowse projectile doom-themes smart-mode-line htmlize ox-pandoc latex-extra auctex which-key function-args ggtags cyberpunk-2019-theme cyberpunk-theme zygospore helm-gtags helm yasnippet ws-butler volatile-highlights use-package undo-tree iedit dtrt-indent counsel-projectile company clean-aindent-mode anzu))))
+    (slime org-bullets flycheck helm-ag ivy eyebrowse projectile doom-themes smart-mode-line htmlize ox-pandoc latex-extra auctex which-key function-args ggtags cyberpunk-2019-theme cyberpunk-theme zygospore helm-gtags helm yasnippet ws-butler volatile-highlights use-package undo-tree iedit dtrt-indent counsel-projectile company clean-aindent-mode anzu))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -129,3 +131,5 @@
 
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config))
+
+(yas-global-mode t)

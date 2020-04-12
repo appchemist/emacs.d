@@ -39,6 +39,8 @@
 (require 'setup-editing)
 (require 'setup-speedbar)
 (require 'setup-projectile)
+(require 'setup-slime)
+(require 'setup-org)
 (require 'ox-latex)
 ;; ox-confluence git에서 코드를 가져옴
 (require 'ox-confluence)
@@ -46,8 +48,6 @@
 (setq org-latex-listings t)
 (add-to-list 'org-latex-packages-alist '("" "listings"))
 (add-to-list 'org-latex-packages-alist '("" "color"))
-
-(load-file "~/.emacs.d/custom/setup-org.el")
 
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-ca" 'org-agenda)

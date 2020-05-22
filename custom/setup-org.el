@@ -1,11 +1,13 @@
 (setq org-directory "~/Dropbox/org")
 (setq org-default-notes-file (concat org-directory "refile.org"))
 
-;; I use C-c c to start capture mode
+;; Key Configuration for org
 (global-set-key (kbd "C-c c") 'org-capture)
-
-;; (global-set-key (kbd "C-c i") 'org-clock-in)
-;; (global-set-key (kbd "C-c o") 'org-clock-out)
+(global-set-key (kbd "C-c i") 'org-clock-in)
+(global-set-key (kbd "C-c o") 'org-clock-out)
+(global-set-key (kbd "C-c l") 'org-store-link)
+(global-set-key (kbd "C-c a") 'org-agenda)
+(global-set-key (kbd "C-c b") 'org-switchb)
 
 ;; Capture templates for: TODO tasks, Notes, appointments, phone calls, meetings, and org-protocol
 (setq org-capture-templates
@@ -19,22 +21,17 @@
                "* TODO %?\n" :clock-in t :clock-resume t)
               ("c" "Study CS" entry (file+headline "~/Dropbox/org/gtd/appchemist.org" "Study CS")
                "* STUDY %?\n")
-              ;; ("r" "respond" entry (file "~/Dropbox/org/refile.org")
-              ;;  "* NEXT Respond to %:from on %:subject\nSCHEDULED: %t\n%U\n%a\n" :clock-in t :clock-resume t :immediate-finish t)
-              ;; ("n" "note" entry (file "~/Dropbox/org/refile.org")
-              ;;  "* %? :NOTE:\n%U\n%a\n" :clock-in t :clock-resume t)
-              ;; ("j" "Journal" entry (file+datetree "~/Dropbox/org/diary.org")
-              ;;  "* %?\n%U\n" :clock-in t :clock-resume t)
-              ;; ("w" "org-protocol" entry (file "~/Dropbox/org/refile.org")
-              ;;  "* TODO Review %c\n%U\n" :immediate-finish t)
-              ;; ("m" "Meeting" entry (file "~/Dropbox/org/refile.org")
-              ;;  "* MEETING with %? :MEETING:\n%U" :clock-in t :clock-resume t)
-              ;; ("p" "Phone call" entry (file "~/Dropbox/org/refile.org")
-              ;;  "* PHONE %? :PHONE:\n%U" :clock-in t :clock-resume t)
-              ;; ("h" "Habit" entry (file "~/Dropbox/org/refile.org")
-              ;;                 "* NEXT %?\n%U\n%a\nSCHEDULED: %(format-time-string \"%<<%Y-%m-%d %a .+1d/3d>>\")\n:PROPERTIES:\n:STYLE: habit\n:R
-              ;; EPEAT_TO_STATE: NEXT\n:END:\n"))))
               )))
+
+;; '@' is for a note with timestamp
+;; '!' is for a timestamp
+;; '/!' is for a timestamp when leaving that state
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "STARTED(s!)" "POSTPONE(p@)" "|" "DONE(d!)" "CANCELED(c@)")))
+
+(setq org-todo-keyword-faces
+      '(("TODO" . "red") ("STARTED" . "green")
+        ("POSTPONE" . "yellow") ("CANCELED" . (:foreground "blue" :weight bold))))
 
 (setq org-refile-targets
       '((nil :maxlevel . 9)

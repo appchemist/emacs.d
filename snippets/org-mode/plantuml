@@ -3,8 +3,7 @@
 # key: orguml
 # --
 #+BEGIN_SRC plantuml :file $1.png
-$3
+$0
 #+END_SRC
 
-#+CAPTION: $2
 #+RESULTS:

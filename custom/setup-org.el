@@ -43,6 +43,7 @@
   (interactive)
   (find-file (concat org-directory "/gtd/gtd.org")))
 
+(require 'ox-latex)
 (setq org-latex-listings t)
 (add-to-list 'org-latex-packages-alist '("" "listings"))
 (add-to-list 'org-latex-packages-alist '("" "color"))

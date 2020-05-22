@@ -41,13 +41,8 @@
 (require 'setup-projectile)
 (require 'setup-slime)
 (require 'setup-org)
-(require 'ox-latex)
 ;; ox-confluence git에서 코드를 가져옴
 (require 'ox-confluence)
-
-(setq org-latex-listings t)
-(add-to-list 'org-latex-packages-alist '("" "listings"))
-(add-to-list 'org-latex-packages-alist '("" "color"))
 
 ;; function-args
 ;; (require 'function-args)

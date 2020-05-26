@@ -92,6 +92,12 @@
   (switch-to-buffer term-ansi-buffer-name))
 
 (global-set-key (kbd "C-c t") 'term-screen)
+(global-set-key (kbd "s-1") 'eyebrowse-switch-to-window-config-1)
+(global-set-key (kbd "s-2") 'eyebrowse-switch-to-window-config-2)
+(global-set-key (kbd "s-3") 'eyebrowse-switch-to-window-config-3)
+(global-set-key (kbd "s-4") 'eyebrowse-switch-to-window-config-4)
+(global-set-key (kbd "s-5") 'eyebrowse-switch-to-window-config-5)
+
 ;;;
 
 ;;;

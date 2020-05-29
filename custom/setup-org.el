@@ -50,16 +50,20 @@
                      ((org-agenda-skip-function '(org-agenda-skip-entry-if 'DONE 'CANCELED))
                       (org-agenda-overriding-header
                        "Priority tasks")))
+          (todo "TODO|STARTED"
+                   ((org-agenda-skip-function
+                     '(org-agenda-skip-if nil '(scheduled deadline)))
+                    (org-agenda-sorting-strategy '((todo priority-up todo-state-down)))
+                    (org-agenda-overriding-header
+                     "TODO & Started Tasks")))
+          (todo "POSTPONE"
+                ((org-agenda-overriding-header
+                  "Postpone Tasks")))
           (agenda "Week At A Glance:"
                   ((org-agenda-span '7)
                    (org-agenda-start-on-weekday nil)
                    (org-agenda-overriding-header
                     "Week At A Glance:")))
-          (alltodo ""
-                   ((org-agenda-skip-function
-                     '(org-agenda-skip-if nil '(scheduled deadline)))
-                    (org-agenda-overriding-header
-                     "All Tasks")))
         ))))
 
 (defun open-my-org ()
@@ -118,7 +122,7 @@
 (setq org-plantuml-jar-path
       (expand-file-name
        ;; plantuml 설치 위치 지정
-       "/usr/local/Cellar/plantuml/1.2019.13/libexec/plantuml.jar"))
+       "/usr/local/Cellar/plantuml/1.2020.6/libexec/plantuml.jar"))
 (add-hook 'org-babel-after-execute-hook
           (lambda ()
             (when org-inline-image-overlays

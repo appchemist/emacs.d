@@ -39,6 +39,29 @@
 (setq org-outline-path-complete-in-steps nil)
 (setq org-refile-use-outline-path t)
 
+(setq org-agenda-custom-commands
+      '(("w" "Agenda and Work-related tasks"
+         (;; One block with a standard agenda view
+          (agenda ""
+                  ((org-agenda-span 'day)
+                   (org-agenda-overriding-header
+                    "Today's Schedule:")))
+          (tags-todo "+PRIORITY={A}"
+                     ((org-agenda-skip-function '(org-agenda-skip-entry-if 'DONE 'CANCELED))
+                      (org-agenda-overriding-header
+                       "Priority tasks")))
+          (agenda "Week At A Glance:"
+                  ((org-agenda-span '7)
+                   (org-agenda-start-on-weekday nil)
+                   (org-agenda-overriding-header
+                    "Week At A Glance:")))
+          (alltodo ""
+                   ((org-agenda-skip-function
+                     '(org-agenda-skip-if nil '(scheduled deadline)))
+                    (org-agenda-overriding-header
+                     "All Tasks")))
+        ))))
+
 (defun open-my-org ()
   (interactive)
   (find-file (concat org-directory "/gtd/gtd.org")))

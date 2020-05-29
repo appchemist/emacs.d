@@ -55,4 +55,7 @@
 (windmove-default-keybindings)
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
+(global-set-key (kbd "s-[") 'previous-buffer)
+(global-set-key (kbd "s-]") 'next-buffer)
+
 (provide 'setup-general)

@@ -59,7 +59,7 @@
     ("3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default)))
  '(org-agenda-files
    (quote
-    ("/Users/gyeongwon.do/Dropbox/org/gtd/gtd.org" "/Users/gyeongwon.do/Dropbox/org/gtd/appchemist.org" "/Users/gyeongwon.do/Dropbox/org/gtd/complete.org" "/Users/gyeongwon.do/Dropbox/org/gtd/config_gtd.org")))
+    ("~/Dropbox/org/gtd/gtd.org" "~/Dropbox/org/gtd/appchemist.org" "~/Dropbox/org/gtd/complete.org" "~/Dropbox/org/gtd/config_gtd.org")))
  '(package-selected-packages
    (quote
     (slime org-bullets flycheck helm-ag ivy eyebrowse projectile doom-themes smart-mode-line htmlize ox-pandoc latex-extra auctex which-key function-args ggtags cyberpunk-2019-theme cyberpunk-theme zygospore helm-gtags helm yasnippet ws-butler volatile-highlights use-package undo-tree iedit dtrt-indent counsel-projectile company clean-aindent-mode anzu))))

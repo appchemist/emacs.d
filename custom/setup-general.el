@@ -57,5 +57,6 @@
 
 (global-set-key (kbd "s-[") 'previous-buffer)
 (global-set-key (kbd "s-]") 'next-buffer)
+(global-set-key (kbd "M-n") 'ace-window)
 
 (provide 'setup-general)

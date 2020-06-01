@@ -64,12 +64,13 @@
                    (org-agenda-start-on-weekday nil)
                    (org-agenda-overriding-header
                     "Week At A Glance:")))
-        ))))
+          ))))
 
 (defun open-my-org ()
   (interactive)
   (find-file (concat org-directory "/gtd/gtd.org")))
 
+(setq org-agenda-start-with-follow-mode t)
 (require 'ox-latex)
 (setq org-latex-listings t)
 (add-to-list 'org-latex-packages-alist '("" "listings"))

@@ -62,7 +62,7 @@
     ("~/Dropbox/org/gtd/gtd.org" "~/Dropbox/org/gtd/appchemist.org" "~/Dropbox/org/gtd/complete.org" "~/Dropbox/org/gtd/config_gtd.org")))
  '(package-selected-packages
    (quote
-    (slime org-bullets flycheck helm-ag ivy eyebrowse projectile doom-themes smart-mode-line htmlize ox-pandoc latex-extra auctex which-key function-args ggtags cyberpunk-2019-theme cyberpunk-theme zygospore helm-gtags helm yasnippet ws-butler volatile-highlights use-package undo-tree iedit dtrt-indent counsel-projectile company clean-aindent-mode anzu))))
+    (ace-window slime org-bullets flycheck helm-ag ivy eyebrowse projectile doom-themes smart-mode-line htmlize ox-pandoc latex-extra auctex which-key function-args ggtags cyberpunk-2019-theme cyberpunk-theme zygospore helm-gtags helm yasnippet ws-butler volatile-highlights use-package undo-tree iedit dtrt-indent counsel-projectile company clean-aindent-mode anzu))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

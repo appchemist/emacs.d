@@ -13,6 +13,14 @@
   (quote
    ("~/Dropbox/org/gtd/gtd.org" "~/Dropbox/org/gtd/appchemist.org" "~/Dropbox/org/gtd/complete.org" "~/Dropbox/org/gtd/config_gtd.org")))
 
+(setq org-main-gtd "~/Dropbox/org/gtd/gtd.org")
+(defun org/exit ()
+  (with-current-buffer (find-file-noselect org-main-gtd)
+    (save-excursion
+      (org-clock-out nil t)
+      (save-buffer))))
+(add-hook 'kill-emacs-hook #'org/exit)
+
 ;; Capture templates for: TODO tasks, Notes, appointments, phone calls, meetings, and org-protocol
 (setq org-capture-templates
       (quote (("w" "Wadiz todo" entry (file+headline "~/Dropbox/org/gtd/gtd.org" "Wadiz")
@@ -75,6 +83,7 @@
   (find-file (concat org-directory "/gtd/gtd.org")))
 
 (setq org-agenda-start-with-follow-mode t)
+
 (require 'ox-latex)
 (setq org-latex-listings t)
 (add-to-list 'org-latex-packages-alist '("" "listings"))

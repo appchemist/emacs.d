@@ -22,28 +22,6 @@
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
 
-(require 'use-package)
-(setq use-package-always-ensure t)
-
-(add-to-list 'load-path "~/.emacs.d/custom")
-(add-to-list 'default-frame-alist
-              '(font . "D2Coding"))
-
-(require 'setup-general)
-(if (version< emacs-version "24.4")
-    (require 'setup-ivy-counsel)
-  (require 'setup-helm-gtags))
-;; (require 'setup-ggtags)
-(require 'setup-helm)
-(require 'setup-cedet)
-(require 'setup-editing)
-(require 'setup-speedbar)
-(require 'setup-projectile)
-(require 'setup-slime)
-(require 'setup-org)
-;; ox-confluence git에서 코드를 가져옴
-(require 'ox-confluence)
-
 ;; function-args
 ;; (require 'function-args)
 ;; (fa-config-default)
@@ -91,13 +69,6 @@
   (term-set-escape-char ?\C-x)
   (switch-to-buffer term-ansi-buffer-name))
 
-(global-set-key (kbd "C-c t") 'term-screen)
-(global-set-key (kbd "s-1") 'eyebrowse-switch-to-window-config-1)
-(global-set-key (kbd "s-2") 'eyebrowse-switch-to-window-config-2)
-(global-set-key (kbd "s-3") 'eyebrowse-switch-to-window-config-3)
-(global-set-key (kbd "s-4") 'eyebrowse-switch-to-window-config-4)
-(global-set-key (kbd "s-5") 'eyebrowse-switch-to-window-config-5)
-
 ;;;
 
 ;;;
@@ -129,3 +100,25 @@
   (doom-themes-org-config))
 
 (yas-global-mode t)
+
+(require 'use-package)
+(setq use-package-always-ensure t)
+
+(add-to-list 'load-path "~/.emacs.d/custom")
+(add-to-list 'default-frame-alist
+             '(font . "D2Coding"))
+
+(if (version< emacs-version "24.4")
+    (require 'setup-ivy-counsel)
+  (require 'setup-helm-gtags))
+;; (require 'setup-ggtags)
+(require 'setup-helm)
+(require 'setup-cedet)
+(require 'setup-editing)
+(require 'setup-speedbar)
+(require 'setup-projectile)
+(require 'setup-slime)
+(require 'setup-org)
+;; ox-confluence git에서 코드를 가져옴
+(require 'ox-confluence)
+(require 'setup-general)

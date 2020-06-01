@@ -2,12 +2,27 @@
 (tool-bar-mode -1)
 (which-key-mode 1)
 (eyebrowse-mode 1)
+(yas-global-mode t)
 
 (set-language-environment "Korean")
 (prefer-coding-system 'utf-8)
 
 (setq gc-cons-threshold 100000000)
 (setq inhibit-startup-message t)
+
+;; GNU screen inside GNU Emacs
+(defun term-screen ()
+  (interactive)
+  "Open GNU screen session or reattaches existing one"
+  (require 'term)
+  (setq term-ansi-buffer-name (concat "*" "terminal" "*"))
+  (term-ansi-make-term term-ansi-buffer-name
+                       "/usr/bin/screen" nil "-d" "-R" "-U")
+  (set-buffer term-ansi-buffer-name)
+  (term-mode)
+  (term-char-mode)
+  (term-set-escape-char ?\C-x)
+  (switch-to-buffer term-ansi-buffer-name))
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 

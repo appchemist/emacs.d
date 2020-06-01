@@ -13,6 +13,7 @@
   (quote
    ("~/Dropbox/org/gtd/gtd.org" "~/Dropbox/org/gtd/appchemist.org" "~/Dropbox/org/gtd/complete.org" "~/Dropbox/org/gtd/config_gtd.org")))
 
+;; Set a task which is clock-in to clock-out when exit emacs
 (setq org-main-gtd "~/Dropbox/org/gtd/gtd.org")
 (defun org/exit ()
   (with-current-buffer (find-file-noselect org-main-gtd)

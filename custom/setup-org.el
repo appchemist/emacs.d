@@ -1,3 +1,19 @@
+(use-package org-bullets
+  :ensure t
+  :config
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+
+(use-package  ox-pandoc
+  :ensure t
+  :init
+  ;; pandoc 때문에 경로 추가
+  ;; pandoc 패키지 설치 필요
+  ;; mac의 경우 - brew install pandoc
+  (add-to-list 'exec-path "/usr/local/bin"))
+(use-package latex-extra
+  :ensure t
+  :hook (LaTeX-mode . latex-extra-mode))
+
 (setq org-directory "~/Dropbox/org")
 (setq org-default-notes-file (concat org-directory "refile.org"))
 
@@ -25,11 +41,11 @@
 ;; Capture templates for: TODO tasks, Notes, appointments, phone calls, meetings, and org-protocol
 (setq org-capture-templates
       (quote (("w" "Wadiz todo" entry (file+headline "~/Dropbox/org/gtd/gtd.org" "Wadiz")
-               "* TODO %?\n" :clock-in t :clock-resume t)
+               "* TODO %?\n" :clock-in t)
               ("i" "Wadiz Issue todo" entry (file+headline "~/Dropbox/org/gtd/gtd.org" "Wadiz Issue")
-               "* TODO %?\n" :clock-in t :clock-resume t)
+               "* TODO %?\n" :clock-in t)
               ("e" "Wadiz Etc todo" entry (file+headline "~/Dropbox/org/gtd/gtd.org" "Wadiz Etc")
-               "* TODO %?\n" :clock-in t :clock-resume t)
+               "* TODO %?\n" :clock-in t)
               ("t" "할일 todo" entry (file+headline "~/Dropbox/org/gtd/appchemist.org" "할일 리스트")
                "* TODO %?\n" :clock-in t :clock-resume t)
               ("c" "Study CS" entry (file+headline "~/Dropbox/org/gtd/appchemist.org" "Study CS")
@@ -47,8 +63,7 @@
         ("POSTPONE" . "yellow") ("CANCELED" . (:foreground "blue" :weight bold))))
 
 (setq org-refile-targets
-      '((nil :maxlevel . 9)
-        (org-agenda-files :maxlevel . 9)))
+      '((org-agenda-files :maxlevel . 9)))
 (setq org-outline-path-complete-in-steps nil)
 (setq org-refile-use-outline-path t)
 
@@ -74,6 +89,7 @@
                   "Postpone Tasks")))
           (agenda "Week At A Glance:"
                   ((org-agenda-span '7)
+                   (org-agenda-start-day "+1d")
                    (org-agenda-start-on-weekday nil)
                    (org-agenda-overriding-header
                     "Week At A Glance:")))
@@ -84,8 +100,8 @@
   (find-file (concat org-directory "/gtd/gtd.org")))
 
 (setq org-agenda-start-with-follow-mode t)
-
 (require 'ox-latex)
+
 (setq org-latex-listings t)
 (add-to-list 'org-latex-packages-alist '("" "listings"))
 (add-to-list 'org-latex-packages-alist '("" "color"))
@@ -117,13 +133,6 @@
    ;;(sqlite . t)
    ))
 
-;;;;;;;;;;;;;;;;;;;;;;;
-;; org bullet config ;;
-;;;;;;;;;;;;;;;;;;;;;;;
-(require 'org-bullets)
-(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
-;;;;;;;;;;;;;;;;;;;;;;;
-
 ;;;;;;;;;;;;;;;;;;;;;
 ;; plantuml config ;;
 ;;;;;;;;;;;;;;;;;;;;;
@@ -150,8 +159,4 @@
 ;; end of plantuml config ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; pandoc 때문에 경로 추가
-;; pandoc 패키지 설치 필요
-;; mac의 경우 - brew install pandoc
-(add-to-list 'exec-path "/usr/local/bin")
 (provide 'setup-org)

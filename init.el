@@ -17,10 +17,14 @@
                          ("org" . "http://orgmode.org/elpa/")))
 (package-initialize)
 
-(package-refresh-contents)
-
 (unless (package-installed-p 'use-package)
+  (package-refresh-contents)
   (package-install 'use-package))
+
+;; (dolist (package '(ace-window slime flycheck helm-ag ivy eyebrowse projectile doom-themes smart-mode-line htmlize latex-extra which-key function-args ggtags cyberpunk-2019-theme cyberpunk-theme zygospore helm yasnippet ws-butler volatile-highlights use-package undo-tree iedit dtrt-indent counsel-projectile company clean-aindent-mode anzu))
+;;   (unless (package-installed-p package)
+;;     (package-install package))
+;;   (require package))
 
 ;; function-args
 ;; (require 'function-args)
@@ -34,8 +38,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   (quote
-    (ace-window slime org-bullets flycheck helm-ag ivy eyebrowse projectile doom-themes smart-mode-line htmlize ox-pandoc latex-extra auctex which-key function-args ggtags cyberpunk-2019-theme cyberpunk-theme zygospore helm-gtags helm yasnippet ws-butler volatile-highlights use-package undo-tree iedit dtrt-indent counsel-projectile company clean-aindent-mode anzu))))
+   '(ox-latex slime flycheck helm-ag ivy eyebrowse projectile doom-themes smart-mode-line htmlize ox-pandoc auctex which-key function-args ggtags cyberpunk-2019-theme cyberpunk-theme zygospore helm-gtags helm yasnippet ws-butler volatile-highlights use-package undo-tree iedit dtrt-indent counsel-projectile company clean-aindent-mode anzu)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

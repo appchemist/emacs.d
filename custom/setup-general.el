@@ -1,7 +1,19 @@
+(use-package ace-window
+  :ensure t
+  :bind (("s-n" . ace-window)))
+(use-package eyebrowse
+  :ensure t
+  :bind (("s-1" . eyebrowse-switch-to-window-config-1)
+         ("s-2" . eyebrowse-switch-to-window-config-2)
+         ("s-3" . eyebrowse-switch-to-window-config-3)
+         ("s-4" . eyebrowse-switch-to-window-config-4)
+         ("s-5" . eyebrowse-switch-to-window-config-5))
+  :config
+  (eyebrowse-mode 1))
+
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (which-key-mode 1)
-(eyebrowse-mode 1)
 (yas-global-mode t)
 
 (set-language-environment "Korean")
@@ -73,16 +85,10 @@
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
 (global-set-key (kbd "C-c t") 'term-screen)
-(global-set-key (kbd "s-1") 'eyebrowse-switch-to-window-config-1)
-(global-set-key (kbd "s-2") 'eyebrowse-switch-to-window-config-2)
-(global-set-key (kbd "s-3") 'eyebrowse-switch-to-window-config-3)
-(global-set-key (kbd "s-4") 'eyebrowse-switch-to-window-config-4)
-(global-set-key (kbd "s-5") 'eyebrowse-switch-to-window-config-5)
 
 (global-set-key (kbd "C-c w") 'whitespace-mode)
 (global-set-key (kbd "s-[") 'previous-buffer)
 (global-set-key (kbd "s-]") 'next-buffer)
-(global-set-key (kbd "M-n") 'ace-window)
 (global-set-key (kbd "S-SPC") 'toggle-korean-input-method)
-
+;;(global-set-key (kbd "<f18>") 'toggle-korean-input-method)
 (provide 'setup-general)

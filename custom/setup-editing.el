@@ -40,12 +40,14 @@
 ;; Package: volatile-highlights
 ;; GROUP: Editing -> Volatile Highlights
 (use-package volatile-highlights
+  :ensure t
   :init
   (volatile-highlights-mode t))
 
 ;; Package: undo-tree
 ;; GROUP: Editing -> Undo -> Undo Tree
 (use-package undo-tree
+  :ensure t
   :init
   (global-undo-tree-mode 1))
 
@@ -54,23 +56,29 @@
 ;; GROUP: Editing -> Yasnippet
 ;; Package: yasnippet
 (use-package yasnippet
+  :ensure t
   :defer t
   :init
-  (add-hook 'prog-mode-hook 'yas-minor-mode))
+  (add-hook 'prog-mode-hook 'yas-minor-mode)
+  (yas-global-mode))
 
 ;; Package: clean-aindent-mode
 (use-package clean-aindent-mode
+  :ensure t
+  :bind (("RET" . newline-and-indent))
   :init
   (add-hook 'prog-mode-hook 'clean-aindent-mode))
 
 ;; Package: dtrt-indent
 (use-package dtrt-indent
+  :ensure t
   :init
   (dtrt-indent-mode 1)
   (setq dtrt-indent-verbosity 0))
 
 ;; Package: ws-butler
 (use-package ws-butler
+  :ensure t
   :init
   (add-hook 'prog-mode-hook 'ws-butler-mode)
   (add-hook 'text-mode 'ws-butler-mode)
@@ -78,12 +86,14 @@
 
 ;; PACKAGE: comment-dwim-2
 (use-package comment-dwim-2
+  :ensure t
   :bind (("M-;" . comment-dwim-2))
   )
 
 ;; PACKAGE: anzu
 ;; GROUP: Editing -> Matching -> Isearch -> Anzu
 (use-package anzu
+  :ensure t
   :init
   (global-anzu-mode)
   (global-set-key (kbd "M-%") 'anzu-query-replace)
@@ -91,6 +101,7 @@
 
 ;; PACKAGE: iedit
 (use-package iedit
+  :ensure t
   :bind (("C-;" . iedit-mode))
   :init
   (setq iedit-toggle-key-default nil))

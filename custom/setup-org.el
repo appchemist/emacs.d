@@ -3,7 +3,7 @@
   :config
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
-(use-package  ox-pandoc
+(use-package ox-pandoc
   :ensure t
   :init
   ;; pandoc 때문에 경로 추가
@@ -100,8 +100,8 @@
   (find-file (concat org-directory "/gtd/gtd.org")))
 
 (setq org-agenda-start-with-follow-mode t)
-(require 'ox-latex)
 
+(require 'ox-latex)
 (setq org-latex-listings t)
 (add-to-list 'org-latex-packages-alist '("" "listings"))
 (add-to-list 'org-latex-packages-alist '("" "color"))
@@ -146,7 +146,7 @@
 (setq org-plantuml-jar-path
       (expand-file-name
        ;; plantuml 설치 위치 지정
-       "/usr/local/Cellar/plantuml/1.2020.6/libexec/plantuml.jar"))
+       "/Users/gyeongwon.do/.emacs.d/custom/package/plantuml.jar"))
 (add-hook 'org-babel-after-execute-hook
           (lambda ()
             (when org-inline-image-overlays

@@ -1,8 +1,11 @@
 (use-package helm
+  :ensure t
   :init
   (progn
     (require 'helm-config)
     (require 'helm-grep)
+    (use-package helm-ag
+      :ensure t)
     ;; To fix error at compile:
     ;; Error (bytecomp): Forgot to expand macro with-helm-buffer in
     ;; (with-helm-buffer helm-echo-input-in-header-line)
@@ -110,6 +113,7 @@
     ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
     ;; Locate the helm-swoop folder to your path
     (use-package helm-swoop
+      :ensure t
       :bind (("s-s" . helm-swoop)
              ("C-c s" . helm-multi-swoop-all))
       :config
@@ -134,6 +138,7 @@
     (helm-mode 1)
 
     (use-package helm-projectile
+      :ensure t
       :init
       (helm-projectile-on)
       (setq projectile-completion-system 'helm)

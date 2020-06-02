@@ -38,7 +38,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(ox-latex slime flycheck helm-ag ivy eyebrowse projectile doom-themes smart-mode-line htmlize ox-pandoc auctex which-key function-args ggtags cyberpunk-2019-theme cyberpunk-theme zygospore helm-gtags helm yasnippet ws-butler volatile-highlights use-package undo-tree iedit dtrt-indent counsel-projectile company clean-aindent-mode anzu)))
+   '(use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -67,7 +67,7 @@
 (if (version< emacs-version "24.4")
     (require 'setup-ivy-counsel)
   (require 'setup-helm-gtags))
-;; (require 'setup-ggtags)
+;; (require 'setup-ggtags)			
 (require 'setup-helm)
 (require 'setup-cedet)
 (require 'setup-editing)
@@ -75,6 +75,8 @@
 (require 'setup-projectile)
 (require 'setup-slime)
 (require 'setup-org)
+(require 'setup-function-args)
+;; (require 'setup-c)
 ;; ox-confluence git에서 코드를 가져옴
 (require 'ox-confluence)
 (require 'setup-general)

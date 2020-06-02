@@ -1,4 +1,5 @@
 (use-package ivy
+  :ensure t
   :init
   (progn
     (ivy-mode 1)
@@ -6,6 +7,7 @@
     (global-set-key (kbd "C-c s") 'swiper)))
 
 (use-package counsel
+  :ensure t
   :bind
   (("M-x" . counsel-M-x)
    ("M-y" . counsel-yank-pop)
@@ -19,6 +21,7 @@
    ("C-h l" . counsel-load-library)))
 
 (use-package counsel-projectile
+  :ensure t
   :init
   (counsel-projectile-mode))
 

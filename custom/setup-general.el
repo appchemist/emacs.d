@@ -1,6 +1,24 @@
 (use-package ace-window
   :ensure t
   :bind (("s-n" . ace-window)))
+
+(use-package which-key
+  :ensure t
+  :config
+  (which-key-mode 1))
+
+(use-package company
+  :ensure t
+  :config
+  (global-company-mode 1)
+  (delete 'company-semantic company-backends))
+;; (define-key c-mode-map  [(control tab)] 'company-complete)
+;; (define-key c++-mode-map  [(control tab)] 'company-complete)
+
+(use-package zygospore
+  :ensure t
+  :bind (("C-x 1" . zygospore-toggle-delete-other-windows)))
+
 (use-package eyebrowse
   :ensure t
   :bind (("s-1" . eyebrowse-switch-to-window-config-1)
@@ -11,10 +29,18 @@
   :config
   (eyebrowse-mode 1))
 
+(use-package htmlize
+  :ensure t)
+
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode)
+  :custom
+  (flycheck-display-errors-delay .3)
+  (flycheck-stylelintrc "~/.stylelintrc.json"))
+
 (menu-bar-mode -1)
 (tool-bar-mode -1)
-(which-key-mode 1)
-(yas-global-mode t)
 
 (set-language-environment "Korean")
 (prefer-coding-system 'utf-8)
@@ -65,18 +91,9 @@
  )
 
 ;; company
-(use-package company
-  :init
-  (global-company-mode 1)
-  (delete 'company-semantic company-backends))
-;; (define-key c-mode-map  [(control tab)] 'company-complete)
-;; (define-key c++-mode-map  [(control tab)] 'company-complete)
 
 
 ;; Package zygospore
-(use-package zygospore
-  :bind (("C-x 1" . zygospore-toggle-delete-other-windows)
-         ("RET" .   newline-and-indent)))
 
   ; automatically indent when press RET
 

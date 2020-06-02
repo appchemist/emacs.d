@@ -46,6 +46,8 @@
                "* TODO %?\n" :clock-in t)
               ("e" "Wadiz Etc todo" entry (file+headline "~/Dropbox/org/gtd/gtd.org" "Wadiz Etc")
                "* TODO %?\n" :clock-in t)
+              ("m" "Meeting" entry (file+headline "~/Dropbox/org/gtd/gtd.org" "Wadiz Etc")
+               "* MEETING %?\nSCHEDULED: %^t\n  %U")
               ("t" "할일 todo" entry (file+headline "~/Dropbox/org/gtd/appchemist.org" "할일 리스트")
                "* TODO %?\n" :clock-in t :clock-resume t)
               ("c" "Study CS" entry (file+headline "~/Dropbox/org/gtd/appchemist.org" "Study CS")
@@ -56,7 +58,7 @@
 ;; '!' is for a timestamp
 ;; '/!' is for a timestamp when leaving that state
 (setq org-todo-keywords
-      '((sequence "TODO(t)" "STARTED(s!)" "POSTPONE(p@)" "|" "DONE(d!)" "CANCELED(c@)")))
+      '((sequence "TODO(t)" "MEETING(m)" "STARTED(s!)" "POSTPONE(p@)" "|" "DONE(d!)" "CANCELED(c@)")))
 
 (setq org-todo-keyword-faces
       '(("TODO" . "red") ("STARTED" . "green")

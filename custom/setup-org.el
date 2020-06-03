@@ -58,10 +58,12 @@
 ;; '!' is for a timestamp
 ;; '/!' is for a timestamp when leaving that state
 (setq org-todo-keywords
-      '((sequence "TODO(t)" "MEETING(m)" "STARTED(s!)" "POSTPONE(p@)" "|" "DONE(d!)" "CANCELED(c@)")))
+      '((sequence "TODO(t)" "STARTED(s!)" "POSTPONE(p@)" "|" "DONE(d!)" "CANCELED(c@)")
+        (sequence "MEETING(m)" "|" "DONE(d!)")
+        (sequence "STUDY(y)" "STUDYING(i)" "|" "DONE(d!)")))
 
 (setq org-todo-keyword-faces
-      '(("TODO" . "red") ("STARTED" . "green")
+      '(("TODO" . "red") ("STUDY" . "red") ("STARTED" . "green") ("STUDYING" . "green")
         ("POSTPONE" . "yellow") ("CANCELED" . (:foreground "blue" :weight bold))))
 
 (setq org-refile-targets
@@ -89,6 +91,12 @@
           (todo "POSTPONE"
                 ((org-agenda-overriding-header
                   "Postpone Tasks")))
+          (todo "STUDY|STUDYING"
+                ((org-agenda-skip-function
+                  '(org-agenda-skip-if nil '(scheduled deadline)))
+                 (org-agenda-sorting-strategy '((todo priority-up todo-state-down)))
+                 (org-agenda-overriding-header
+                  "STUDY")))
           (agenda "Week At A Glance:"
                   ((org-agenda-span '7)
                    (org-agenda-start-day "+1d")

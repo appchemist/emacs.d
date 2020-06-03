@@ -1,13 +1,12 @@
 (require 'package)
 ;; default package archives
-;; (add-to-list 'package-archives
-;;             '(("melpa" . "http://melpa.org/packages/")
-;;               ("melpa-stable" . "https://stable.melpa.org/packages/")
-;;               ("gnu" . "https://elpa.gnu.org/packages/")
-;;               ("org" . "http://orgmode.org/elpa/")))
+;; (setq package-archives '(("melpa" . "http://melpa.org/packages/")
+;;                          ("melpa-stable" . "https://stable.melpa.org/packages/")
+;;                          ("gnu" . "https://elpa.gnu.org/packages/")
+;;                          ("org" . "http://orgmode.org/elpa/")))
 
 ;; mac os default package archives
-;;(setq package-archives '(("gnu" . "http://mirrors.163.com/elpa/gnu/")
+;; (setq package-archives '(("gnu" . "http://mirrors.163.com/elpa/gnu/")
 ;;                         ("melpa" . "https://melpa.org/packages/")
 ;;                         ("org" . "http://orgmode.org/elpa/")))
 
@@ -15,6 +14,7 @@
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("melpa" . "http://melpa.milkbox.net/packages/")
                          ("org" . "http://orgmode.org/elpa/")))
+
 (package-initialize)
 
 (unless (package-installed-p 'use-package)
@@ -39,7 +39,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (dired company-c-headers htmlize eyebrowse zygospore company which-key ace-window ox-pandoc org-bullets slime sr-speedbar iedit anzu comment-dwim-2 ws-butler dtrt-indent clean-aindent-mode yasnippet undo-tree volatile-highlights helm-projectile helm-swoop helm-gtags flycheck function-args latex-extra helm-ag use-package))))
+    (magit dired company-c-headers htmlize eyebrowse zygospore company which-key ace-window ox-pandoc org-bullets slime sr-speedbar iedit anzu comment-dwim-2 ws-butler dtrt-indent clean-aindent-mode yasnippet undo-tree volatile-highlights helm-projectile helm-swoop helm-gtags flycheck function-args latex-extra helm-ag use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

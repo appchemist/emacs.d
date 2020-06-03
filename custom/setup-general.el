@@ -39,6 +39,9 @@
   (flycheck-display-errors-delay .3)
   (flycheck-stylelintrc "~/.stylelintrc.json"))
 
+(use-package magit
+  :ensure t)
+
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 

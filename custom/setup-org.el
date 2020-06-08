@@ -58,12 +58,13 @@
 ;; '!' is for a timestamp
 ;; '/!' is for a timestamp when leaving that state
 (setq org-todo-keywords
-      '((sequence "TODO(t)" "STARTED(s!)" "POSTPONE(p@)" "|" "DONE(d!)" "CANCELED(c@)")
-        (sequence "MEETING(m)" "|" "DONE(d!)")
-        (sequence "STUDY(y)" "STUDYING(i)" "|" "DONE(d!)")))
+      '((sequence "TODO(t)" "STARTED(s!)" "WAITING(w!/@)" "POSTPONE(p@)" "|" "CANCELED(c@)")
+        (sequence "MEETING(m)" "|")
+        (sequence "STUDY(y)" "STUDYING(i)" "|")
+        (sequence "|" "DONE(d!)")))
 
 (setq org-todo-keyword-faces
-      '(("TODO" . "red") ("STUDY" . "red") ("STARTED" . "green") ("STUDYING" . "green")
+      '(("TODO" . "red") ("STUDY" . "red") ("MEETING" . "red") ("STARTED" . "green") ("STUDYING" . "green") ("WAITING" . (:background "purple" :foreground "green" :weight bold))
         ("POSTPONE" . "yellow") ("CANCELED" . (:foreground "blue" :weight bold))))
 
 (setq org-refile-targets
@@ -82,27 +83,27 @@
                      ((org-agenda-skip-function '(org-agenda-skip-entry-if 'DONE 'CANCELED))
                       (org-agenda-overriding-header
                        "Priority tasks")))
-          (todo "TODO|STARTED"
+          (todo "STARTED|WAITING"
                    ((org-agenda-skip-function
                      '(org-agenda-skip-if nil '(scheduled deadline)))
-                    (org-agenda-sorting-strategy '((todo priority-up todo-state-down)))
+                    (org-agenda-sorting-strategy '((todo todo-state-up priority-down)))
                     (org-agenda-overriding-header
-                     "TODO & Started Tasks")))
-          (todo "POSTPONE"
-                ((org-agenda-overriding-header
-                  "Postpone Tasks")))
-          (todo "STUDY|STUDYING"
+                     "Started & Waiting Tasks")))
+          (todo "TODO"
                 ((org-agenda-skip-function
                   '(org-agenda-skip-if nil '(scheduled deadline)))
-                 (org-agenda-sorting-strategy '((todo priority-up todo-state-down)))
+                 (org-agenda-sorting-strategy '((todo priority-down)))
                  (org-agenda-overriding-header
-                  "STUDY")))
+                  "TODO Tasks")))
           (agenda "Week At A Glance:"
-                  ((org-agenda-span '7)
+                  ((org-agenda-span '14)
                    (org-agenda-start-day "+1d")
                    (org-agenda-start-on-weekday nil)
                    (org-agenda-overriding-header
-                    "Week At A Glance:")))
+                    "2 Week At A Glance:")))
+          (todo "POSTPONE"
+                ((org-agenda-overriding-header
+                  "Postpone Tasks")))
           ))))
 
 (defun open-my-org ()

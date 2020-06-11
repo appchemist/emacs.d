@@ -47,7 +47,7 @@
               ("e" "Wadiz Etc todo" entry (file+headline "~/Dropbox/org/gtd/gtd.org" "Wadiz Etc")
                "* TODO %?\n" :clock-in t)
               ("m" "Meeting" entry (file+headline "~/Dropbox/org/gtd/gtd.org" "Wadiz Etc")
-               "* MEETING %?\nSCHEDULED: %^t\n  %U")
+               "* MEETING %?     :Meeting:\nSCHEDULED: %^t\n  %U" :tag 'Meeting)
               ("t" "할일 todo" entry (file+headline "~/Dropbox/org/gtd/appchemist.org" "할일 리스트")
                "* TODO %?\n" :clock-in t :clock-resume t)
               ("c" "Study CS" entry (file+headline "~/Dropbox/org/gtd/appchemist.org" "Study CS")

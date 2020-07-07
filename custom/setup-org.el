@@ -14,6 +14,9 @@
   :ensure t
   :hook (LaTeX-mode . latex-extra-mode))
 
+(require 'org-attach)
+(setq org-link-abbrev-alist '(("file" . org-attach-expand-link)))
+
 (setq org-directory "~/Dropbox/org")
 (setq org-default-notes-file (concat org-directory "refile.org"))
 
@@ -40,13 +43,13 @@
 
 ;; Capture templates for: TODO tasks, Notes, appointments, phone calls, meetings, and org-protocol
 (setq org-capture-templates
-      (quote (("w" "Wadiz todo" entry (file+headline "~/Dropbox/org/gtd/gtd.org" "Wadiz")
+      (quote (("w" "todo" entry (file+headline "~/Dropbox/org/gtd/gtd.org" "Todo")
                "* TODO %?\n" :clock-in t)
-              ("i" "Wadiz Issue todo" entry (file+headline "~/Dropbox/org/gtd/gtd.org" "Wadiz Issue")
+              ("i" "Issue todo" entry (file+headline "~/Dropbox/org/gtd/gtd.org" "Issue")
                "* TODO %?\n" :clock-in t)
-              ("e" "Wadiz Etc todo" entry (file+headline "~/Dropbox/org/gtd/gtd.org" "Wadiz Etc")
+              ("e" "Etc todo" entry (file+headline "~/Dropbox/org/gtd/gtd.org" "Etc")
                "* TODO %?\n" :clock-in t)
-              ("m" "Meeting" entry (file+headline "~/Dropbox/org/gtd/gtd.org" "Wadiz Etc")
+              ("m" "Meeting" entry (file+headline "~/Dropbox/org/gtd/gtd.org" "Meeting")
                "* MEETING %?     :Meeting:\nSCHEDULED: %^t\n  %U" :tag 'Meeting)
               ("t" "할일 todo" entry (file+headline "~/Dropbox/org/gtd/appchemist.org" "할일 리스트")
                "* TODO %?\n" :clock-in t :clock-resume t)
@@ -58,13 +61,17 @@
 ;; '!' is for a timestamp
 ;; '/!' is for a timestamp when leaving that state
 (setq org-todo-keywords
-      '((sequence "TODO(t)" "STARTED(s!)" "WAITING(w!/@)" "POSTPONE(p@)" "|" "CANCELED(c@)")
+      '((sequence "TODO(t)" "STARTED(s!)" "WAITING(w!/@)" "REVIEW(r!/@)" "POSTPONE(p@)" "|" "CANCELED(c@)")
         (sequence "MEETING(m)" "|")
         (sequence "STUDY(y)" "STUDYING(i)" "|")
+        (sequence "QA(q!/@)" "|")
         (sequence "|" "DONE(d!)")))
 
 (setq org-todo-keyword-faces
-      '(("TODO" . "red") ("STUDY" . "red") ("MEETING" . "red") ("STARTED" . "green") ("STUDYING" . "green") ("WAITING" . (:background "purple" :foreground "green" :weight bold))
+      '(("TODO" . "red") ("STUDY" . "red") ("MEETING" . "red") ("STARTED" . "green") ("STUDYING" . "green")
+        ("WAITING" . (:background "white" :foreground "red" :weight bold))
+        ("REVIEW" . (:background "white" :foreground "green" :weight bold))
+        ("QA" . (:background "white" :foreground "orange" :weight bold))
         ("POSTPONE" . "yellow") ("CANCELED" . (:foreground "blue" :weight bold))))
 
 (setq org-refile-targets
@@ -83,18 +90,18 @@
                      ((org-agenda-skip-function '(org-agenda-skip-entry-if 'DONE 'CANCELED))
                       (org-agenda-overriding-header
                        "Priority tasks")))
-          (todo "STARTED|WAITING"
+          (todo "STARTED|TODO"
                    ((org-agenda-skip-function
                      '(org-agenda-skip-if nil '(scheduled deadline)))
-                    (org-agenda-sorting-strategy '((todo todo-state-up priority-down)))
+                    (org-agenda-sorting-strategy '((todo todo-state-down priority-down)))
                     (org-agenda-overriding-header
-                     "Started & Waiting Tasks")))
-          (todo "TODO"
+                     "Started & TODO Tasks")))
+          (todo "REVIEW|QA|WAITING"
                 ((org-agenda-skip-function
                   '(org-agenda-skip-if nil '(scheduled deadline)))
-                 (org-agenda-sorting-strategy '((todo priority-down)))
+                 (org-agenda-sorting-strategy '((todo todo-state-down priority-down)))
                  (org-agenda-overriding-header
-                  "TODO Tasks")))
+                  "Review & QA & Waiting Tasks")))
           (agenda "Week At A Glance:"
                   ((org-agenda-span '14)
                    (org-agenda-start-day "+1d")
@@ -105,6 +112,8 @@
                 ((org-agenda-overriding-header
                   "Postpone Tasks")))
           ))))
+
+(setq org-image-actual-width (/ (display-pixel-width) 3))
 
 (defun open-my-org ()
   (interactive)

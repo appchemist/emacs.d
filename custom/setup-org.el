@@ -14,6 +14,24 @@
   :ensure t
   :hook (LaTeX-mode . latex-extra-mode))
 
+(use-package org-roam
+  :ensure t
+  :hook
+  (after-init . org-roam-mode)
+  :custom
+  (org-roam-directory "~/Dropbox/org/org-roam")
+  (org-roam-graph-executable "/usr/local/bin/neato")
+  (org-roam-graph-viewer "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
+  :bind (:map org-roam-mode-map
+              (("C-c n l" . org-roam)
+               ("C-c n f" . org-roam-find-file)
+               ("C-c n g" . org-roam-graph-show))
+              :map org-mode-map
+              (("C-c n i" . org-roam-insert))
+              (("C-c n I" . org-roam-insert-immediate))))
+
+(require 'org-roam-protocol)
+
 (require 'org-attach)
 (setq org-link-abbrev-alist '(("file" . org-attach-expand-link)))
 
@@ -113,7 +131,7 @@
                   "Postpone Tasks")))
           ))))
 
-(setq org-image-actual-width (/ (display-pixel-width) 3))
+(setq org-image-actual-width (/ (display-pixel-width) 7))
 
 (defun open-my-org ()
   (interactive)

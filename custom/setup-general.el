@@ -103,6 +103,7 @@
 ;; activate whitespace-mode to view all whitespace characters
 (windmove-default-keybindings)
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
+(add-hook 'emacs-startup-hook 'server-start)
 
 (global-set-key (kbd "C-c t") 'term-screen)
 

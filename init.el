@@ -37,9 +37,13 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-enabled-themes '(doom-acario-dark))
+ '(custom-safe-themes
+   '("fe94e2e42ccaa9714dd0f83a5aa1efeef819e22c5774115a9984293af609fce7" default))
+ '(flycheck-display-errors-delay 0.3)
+ '(flycheck-stylelintrc "~/.stylelintrc.json")
  '(package-selected-packages
-   (quote
-    (magit dired company-c-headers htmlize eyebrowse zygospore company which-key ace-window ox-pandoc org-bullets slime sr-speedbar iedit anzu comment-dwim-2 ws-butler dtrt-indent clean-aindent-mode yasnippet undo-tree volatile-highlights helm-projectile helm-swoop helm-gtags flycheck function-args latex-extra helm-ag use-package))))
+   '(graphviz-dot-mode emacsql-sqlite3 org-roam magit dired company-c-headers htmlize eyebrowse zygospore company which-key ace-window ox-pandoc org-bullets slime sr-speedbar iedit anzu comment-dwim-2 ws-butler dtrt-indent clean-aindent-mode yasnippet undo-tree volatile-highlights helm-projectile helm-swoop helm-gtags flycheck function-args latex-extra helm-ag use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

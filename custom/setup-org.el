@@ -1,10 +1,12 @@
 (use-package org-bullets
   :ensure t
+  :after org
   :config
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 (use-package ox-pandoc
   :ensure t
+  :after org
   :init
   ;; pandoc 때문에 경로 추가
   ;; pandoc 패키지 설치 필요
@@ -16,11 +18,12 @@
 
 (use-package org-roam
   :ensure t
+  :after org
   :hook
   (after-init . org-roam-mode)
   :custom
   (org-roam-directory "~/Dropbox/org/org-roam")
-  (org-roam-graph-executable "/usr/local/bin/neato")
+  (org-roam-graph-executable "/usr/local/bin/dot")
   (org-roam-graph-viewer "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
   :bind (:map org-roam-mode-map
               (("C-c n l" . org-roam)
@@ -32,7 +35,20 @@
 
 (require 'org-roam-protocol)
 
+(use-package org-download
+  :ensure t
+  :after org
+  :hook
+  (dired-mode-hook . org-download-enable)
+  :custom
+  (org-download-image-dir "./image/")
+  :bind
+  (:map org-mode-map
+        (("s-Y" . org-download-screenshot)
+         ("s-y" . org-download-yank))))
+
 (require 'org-attach)
+(setq org-link-abbrev-alist '(("fast" . "./image/")))
 (setq org-link-abbrev-alist '(("file" . org-attach-expand-link)))
 
 (setq org-directory "~/Dropbox/org")

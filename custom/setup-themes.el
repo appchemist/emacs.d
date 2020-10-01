@@ -3,6 +3,8 @@
   :config 
   (doom-modeline-mode 1))
 
+;;(use-package all-the-icons)
+
 (use-package doom-themes
   :ensure t
   :config

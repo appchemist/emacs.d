@@ -2,7 +2,9 @@
   :ensure t
   :after org
   :config
-  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+  (add-hook 'org-mode-hook (lambda ()
+                             (org-bullets-mode 1)
+                             (org-indent-mode 1))))
 
 (use-package ox-pandoc
   :ensure t
@@ -109,7 +111,7 @@
         ("POSTPONE" . "yellow") ("CANCELED" . (:foreground "blue" :weight bold))))
 
 (setq org-refile-targets
-      '((org-agenda-files :maxlevel . 9)))
+      '((org-agenda-files :maxlevel . 2)))
 (setq org-outline-path-complete-in-steps nil)
 (setq org-refile-use-outline-path t)
 
@@ -147,7 +149,7 @@
                   "Postpone Tasks")))
           ))))
 
-(setq org-image-actual-width (/ (display-pixel-width) 7))
+(setq org-image-actual-width (/ (display-pixel-width) 3))
 
 (defun open-my-org ()
   (interactive)

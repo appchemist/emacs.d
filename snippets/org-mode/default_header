@@ -3,4 +3,5 @@
 # key: orgdefheader
 # --
 #+LATEX_HEADER: \usepackage{kotex}
+#+OPTIONS: \n:t
 #+TITLE: $0

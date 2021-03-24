@@ -78,19 +78,15 @@
 
 ;; Capture templates for: TODO tasks, Notes, appointments, phone calls, meetings, and org-protocol
 (setq org-capture-templates
-      (quote (("w" "todo" entry (file+headline "~/Dropbox/org/gtd/gtd.org" "Todo")
-               "* TODO %?\n" :clock-in t)
-              ("i" "Issue todo" entry (file+headline "~/Dropbox/org/gtd/gtd.org" "Issue")
-               "* TODO %?\n" :clock-in t)
-              ("e" "Etc todo" entry (file+headline "~/Dropbox/org/gtd/gtd.org" "Etc")
-               "* TODO %?\n" :clock-in t)
-              ("m" "Meeting" entry (file+headline "~/Dropbox/org/gtd/gtd.org" "Meeting")
-               "* MEETING %?     :Meeting:\nSCHEDULED: %^t\n  %U" :tag 'Meeting)
-              ("t" "할일 todo" entry (file+headline "~/Dropbox/org/gtd/appchemist.org" "할일 리스트")
-               "* TODO %?\n" :clock-in t :clock-resume t)
-              ("c" "Study CS" entry (file+headline "~/Dropbox/org/gtd/appchemist.org" "Study CS")
-               "* STUDY %?\n")
-              )))
+      `(("w" "todo" entry (file+headline ,org-main-gtd "Eden")
+         "* BACKLOG %?\n" :clock-in t)
+        ("m" "Meeting" entry (file+headline ,org-main-gtd "Meeting")
+         "* MEETING %?     :Meeting:\nSCHEDULED: %^t\n  %U" :tag 'Meeting)
+        ("t" "할일 todo" entry (file+headline "~/Dropbox/org/gtd/appchemist.org" "할일 리스트")
+         "* BACKLOG %?\n" :clock-in t :clock-resume t)
+        ("c" "Study CS" entry (file+headline "~/Dropbox/org/gtd/appchemist.org" "Study CS")
+         "* STUDY %?\n")
+        ))
 
 ;; '@' is for a note with timestamp
 ;; '!' is for a timestamp

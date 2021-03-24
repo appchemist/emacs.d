@@ -54,7 +54,8 @@
 (setq org-link-abbrev-alist '(("file" . org-attach-expand-link)))
 
 (setq org-directory "~/Dropbox/org")
-(setq org-default-notes-file (concat org-directory "refile.org"))
+(setq org-main-gtd (concat org-directory "/gtd/gtd.org"))
+(setq org-default-notes-file (concat org-directory "/refile.org"))
 
 ;; Key Configuration for org
 (global-set-key (kbd "C-c c") 'org-capture)
@@ -65,11 +66,9 @@
 (global-set-key (kbd "C-c b") 'org-switchb)
 
 (setq org-agenda-files
-  (quote
-   ("~/Dropbox/org/gtd/gtd.org" "~/Dropbox/org/gtd/appchemist.org" "~/Dropbox/org/gtd/complete.org" "~/Dropbox/org/gtd/config_gtd.org")))
+   `(,org-main-gtd ,(concat org-directory "/gtd/appchemist.org") ,(concat org-directory "/gtd/config_gtd.org")))
 
 ;; Set a task which is clock-in to clock-out when exit emacs
-(setq org-main-gtd "~/Dropbox/org/gtd/gtd.org")
 (defun org/exit ()
   (with-current-buffer (find-file-noselect org-main-gtd)
     (save-excursion
@@ -101,7 +100,8 @@
         (sequence "MEETING(m)" "|")
         (sequence "STUDY(y)" "STUDYING(i)" "|")
         (sequence "QA(q!/@)" "|")
-        (sequence "|" "DONE(d!)")))
+        (sequence "BACKLOG(b)" "|")
+        (sequence "|" "DONE(d!)" "COMPLETE(z!)")))
 
 (setq org-todo-keyword-faces
       '(("TODO" . "red") ("STUDY" . "red") ("MEETING" . "red") ("STARTED" . "green") ("STUDYING" . "green")
@@ -111,7 +111,8 @@
         ("POSTPONE" . "yellow") ("CANCELED" . (:foreground "blue" :weight bold))))
 
 (setq org-refile-targets
-      '((org-agenda-files :maxlevel . 2)))
+      `((,org-agenda-files :maxlevel . 2)
+        (,(concat org-directory "/gtd/complete.org") :maxlevel . 1)))
 (setq org-outline-path-complete-in-steps nil)
 (setq org-refile-use-outline-path t)
 
@@ -126,18 +127,27 @@
                      ((org-agenda-skip-function '(org-agenda-skip-entry-if 'DONE 'CANCELED))
                       (org-agenda-overriding-header
                        "Priority tasks")))
-          (todo "STARTED|TODO"
+          (todo "BACKLOG"
                    ((org-agenda-skip-function
                      '(org-agenda-skip-if nil '(scheduled deadline)))
                     (org-agenda-sorting-strategy '((todo todo-state-down priority-down)))
                     (org-agenda-overriding-header
-                     "Started & TODO Tasks")))
-          (todo "REVIEW|QA|WAITING"
+                     "BackLog")))
+          (todo "TODO"
                 ((org-agenda-skip-function
                   '(org-agenda-skip-if nil '(scheduled deadline)))
                  (org-agenda-sorting-strategy '((todo todo-state-down priority-down)))
                  (org-agenda-overriding-header
-                  "Review & QA & Waiting Tasks")))
+                  "Ready")))
+          (todo "STARTED|REVIEW|QA|WAITING"
+                ((org-agenda-skip-function
+                  '(org-agenda-skip-if nil '(scheduled deadline)))
+                 (org-agenda-sorting-strategy '((todo todo-state-down priority-down)))
+                 (org-agenda-overriding-header
+                  "Doing")))
+          (todo "DONE"
+                ((org-agenda-overriding-header
+                  "Done")))
           (agenda "Week At A Glance:"
                   ((org-agenda-span '14)
                    (org-agenda-start-day "+1d")

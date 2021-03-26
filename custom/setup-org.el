@@ -1,3 +1,10 @@
+(setq org-directory "~/Dropbox/org")
+(setq org-default-notes-file (concat org-directory "/refile.org"))
+(setq org-gtd-file (concat org-directory "/gtd/gtd.org"))
+(setq org-appchemist-file (concat org-directory "/gtd/appchemist.org"))
+(setq org-config-file (concat org-directory "/gtd/config_gtd.org"))
+(setq org-roam-directory (concat org-directory "/org-roam"))
+
 (use-package org-bullets
   :ensure t
   :after org
@@ -24,7 +31,6 @@
   :hook
   (after-init . org-roam-mode)
   :custom
-  (org-roam-directory "~/Dropbox/org/org-roam")
   (org-roam-graph-executable "/usr/local/bin/dot")
   (org-roam-graph-viewer "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
   :bind (:map org-roam-mode-map
@@ -53,9 +59,6 @@
 (setq org-link-abbrev-alist '(("fast" . "./image/")))
 (setq org-link-abbrev-alist '(("file" . org-attach-expand-link)))
 
-(setq org-directory "~/Dropbox/org")
-(setq org-main-gtd (concat org-directory "/gtd/gtd.org"))
-(setq org-default-notes-file (concat org-directory "/refile.org"))
 
 ;; Key Configuration for org
 (global-set-key (kbd "C-c c") 'org-capture)
@@ -66,11 +69,11 @@
 (global-set-key (kbd "C-c b") 'org-switchb)
 
 (setq org-agenda-files
-   `(,org-main-gtd ,(concat org-directory "/gtd/appchemist.org") ,(concat org-directory "/gtd/config_gtd.org")))
+   `(,org-gtd-file ,org-appchemist-file ,org-config-file))
 
 ;; Set a task which is clock-in to clock-out when exit emacs
 (defun org/exit ()
-  (with-current-buffer (find-file-noselect org-main-gtd)
+  (with-current-buffer (find-file-noselect org-gtd-file)
     (save-excursion
       (org-clock-out nil t)
       (save-buffer))))
@@ -78,9 +81,9 @@
 
 ;; Capture templates for: TODO tasks, Notes, appointments, phone calls, meetings, and org-protocol
 (setq org-capture-templates
-      `(("w" "todo" entry (file+headline ,org-main-gtd "Eden")
+      `(("w" "todo" entry (file+headline ,org-gtd-file "Eden")
          "* BACKLOG %?\n" :clock-in t)
-        ("m" "Meeting" entry (file+headline ,org-main-gtd "Meeting")
+        ("m" "Meeting" entry (file+headline ,org-gtd-file "Meeting")
          "* MEETING %?     :Meeting:\nSCHEDULED: %^t\n  %U" :tag 'Meeting)
         ("t" "할일 todo" entry (file+headline "~/Dropbox/org/gtd/appchemist.org" "할일 리스트")
          "* BACKLOG %?\n" :clock-in t :clock-resume t)
@@ -159,7 +162,7 @@
 
 (defun open-my-org ()
   (interactive)
-  (find-file (concat org-directory "/gtd/gtd.org")))
+  (find-file org-gtd-file))
 
 (setq org-agenda-start-with-follow-mode t)
 

@@ -13,33 +13,35 @@
                              (org-bullets-mode 1)
                              (org-indent-mode 1))))
 
-(use-package ox-pandoc
-  :ensure t
-  :after org
-  :init
-  ;; pandoc 때문에 경로 추가
-  ;; pandoc 패키지 설치 필요
-  ;; mac의 경우 - brew install pandoc
-  (add-to-list 'exec-path "/usr/local/bin"))
+;; (use-package ox-pandoc
+;;   :ensure t
+;;   :after org
+;;   :init
+;;   ;; pandoc 때문에 경로 추가
+;;   ;; pandoc 패키지 설치 필요
+;;   ;; mac의 경우 - brew install pandoc
+;;   (add-to-list 'exec-path "/usr/local/bin"))
+
 (use-package latex-extra
   :ensure t
   :hook (LaTeX-mode . latex-extra-mode))
 
 (use-package org-roam
-  :ensure t
-  :after org
-  :hook
-  (after-init . org-roam-mode)
-  :custom
-  (org-roam-graph-executable "/usr/local/bin/dot")
-  (org-roam-graph-viewer "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
-  :bind (:map org-roam-mode-map
-              (("C-c n l" . org-roam)
-               ("C-c n f" . org-roam-find-file)
-               ("C-c n g" . org-roam-graph-show))
-              :map org-mode-map
-              (("C-c n i" . org-roam-insert))
-              (("C-c n I" . org-roam-insert-immediate))))
+   :ensure t
+   :init
+   (setq org-roam-v2-ack t)
+   :custom
+   (org-roam-directory org-roam-directory)
+   (org-roam-completion-everywhere t)
+   ;; (org-roam-graph-executable "/usr/local/bin/dot")
+   ;; (org-roam-graph-viewer "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
+   :bind (("C-c n l" . org-roam-buffer-toggle)
+          ("C-c n f" . org-roam-node-find)
+          ("C-c n i" . org-roam-node-insert)
+          :map org-mode-map
+          ("C-M-i"    . completion-at-point))
+   :config
+   (org-roam-db-autosync-enable))
 
 (require 'org-roam-protocol)
 
@@ -211,7 +213,7 @@
 (setq org-plantuml-jar-path
       (expand-file-name
        ;; plantuml 설치 위치 지정
-       "/Users/gyeongwon.do/.emacs.d/custom/package/plantuml.jar"))
+       "/Users/appchemist/.emacs.d/custom/package/plantuml.jar"))
 (add-hook 'org-babel-after-execute-hook
           (lambda ()
             (when org-inline-image-overlays

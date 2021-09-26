@@ -11,7 +11,7 @@
   :ensure t
   :config
   (global-company-mode 1)
-  (delete 'company-semantic company-backends))
+  (add-to-list 'company-backends 'comany-capf))
 ;; (define-key c-mode-map  [(control tab)] 'company-complete)
 ;; (define-key c++-mode-map  [(control tab)] 'company-complete)
 
@@ -38,9 +38,6 @@
   :custom
   (flycheck-display-errors-delay .3)
   (flycheck-stylelintrc "~/.stylelintrc.json"))
-
-(use-package magit
-  :ensure t)
 
 (menu-bar-mode -1)
 (tool-bar-mode -1)

@@ -37,13 +37,6 @@
                                           newline-mark))
                             (whitespace-mode 1)))
 
-;; Package: volatile-highlights
-;; GROUP: Editing -> Volatile Highlights
-(use-package volatile-highlights
-  :ensure t
-  :init
-  (volatile-highlights-mode t))
-
 ;; Package: undo-tree
 ;; GROUP: Editing -> Undo -> Undo Tree
 (use-package undo-tree

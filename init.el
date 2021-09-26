@@ -1,55 +1,16 @@
 (require 'package)
-;; default package archives
-;; (setq package-archives '(("melpa" . "http://melpa.org/packages/")
-;;                          ("melpa-stable" . "https://stable.melpa.org/packages/")
-;;                          ("gnu" . "https://elpa.gnu.org/packages/")
-;;                          ("org" . "http://orgmode.org/elpa/")))
-
-;; mac os default package archives
-;; (setq package-archives '(("gnu" . "http://mirrors.163.com/elpa/gnu/")
-;;                         ("melpa" . "https://melpa.org/packages/")
-;;                         ("org" . "http://orgmode.org/elpa/")))
-
-;; for pandoc packages archives
-(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                         ("melpa" . "http://melpa.milkbox.net/packages/")
-                         ("org" . "http://orgmode.org/elpa/")))
-
 (package-initialize)
+
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.org/packages/") t)
+;; (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
+(add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/") t)
+;; (add-to-list 'package-archives '("gnu" . "http://mirrors.163.com/elpa/gnu/") t)
 
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
-
-;; (dolist (package '(ace-window slime flycheck helm-ag ivy eyebrowse projectile doom-themes smart-mode-line htmlize latex-extra which-key function-args ggtags cyberpunk-2019-theme cyberpunk-theme zygospore helm yasnippet ws-butler volatile-highlights use-package undo-tree iedit dtrt-indent counsel-projectile company clean-aindent-mode anzu))
-;;   (unless (package-installed-p package)
-;;     (package-install package))
-;;   (require package))
-
-;; function-args
-;; (require 'function-args)
-;; (fa-config-default)
-;; (define-key c-mode-map  [(tab)] 'company-complete)
-;; (define-key c++-mode-map  [(tab)] 'company-complete)
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-enabled-themes '(doom-acario-dark))
- '(custom-safe-themes
-   '("fe94e2e42ccaa9714dd0f83a5aa1efeef819e22c5774115a9984293af609fce7" default))
- '(flycheck-display-errors-delay 0.3)
- '(flycheck-stylelintrc "~/.stylelintrc.json")
- '(package-selected-packages
-   '(graphviz-dot-mode emacsql-sqlite3 org-roam magit dired company-c-headers htmlize eyebrowse zygospore company which-key ace-window ox-pandoc org-bullets slime sr-speedbar iedit anzu comment-dwim-2 ws-butler dtrt-indent clean-aindent-mode yasnippet undo-tree volatile-highlights helm-projectile helm-swoop helm-gtags flycheck function-args latex-extra helm-ag use-package)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "#282c34" :foreground "#bbc2cf" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 130 :width normal :foundry "nil" :family "D2Coding")))))
 
 (setenv "PATH"
         (concat
@@ -68,6 +29,7 @@
 (setq use-package-always-ensure t)
 
 (add-to-list 'load-path "~/.emacs.d/custom")
+
 (require 'setup-themes)
 (if (version< emacs-version "24.4")
     (require 'setup-ivy-counsel)
@@ -80,8 +42,22 @@
 (require 'setup-projectile)
 (require 'setup-slime)
 (require 'setup-org)
-(require 'setup-function-args)
 (require 'setup-c)
 ;; ox-confluence git에서 코드를 가져옴
 (require 'ox-confluence)
 (require 'setup-general)
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:inherit nil :stipple nil :background "#282c34" :foreground "#bbc2cf" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 130 :width normal :foundry "nil" :family "D2Coding")))))
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(flycheck htmlize eyebrowse zygospore company which-key ace-window function-args slime iedit anzu comment-dwim-2 ws-butler dtrt-indent yasnippet undo-tree volatile-highlights helm-projectile helm-swoop helm-ag ggtags helm-gtags doom-themes doom-modeline org-roam use-package)))

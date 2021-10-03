@@ -39,9 +39,15 @@
           ("C-c n f" . org-roam-node-find)
           ("C-c n i" . org-roam-node-insert)
           :map org-mode-map
-          ("C-M-i"    . completion-at-point))
+          ("C-M-i"    . completion-at-point)
+          :map org-roam-dailies-map
+          ("Y" . org-roam-dailies-capture-yesterday)
+          ("T" . org-roam-dailies-capture-tomorrow))
+   :bind-keymap
+   ("C-c n d" . org-roam-dailies-map)
    :config
-   (org-roam-db-autosync-enable))
+   (require 'org-roam-dailies)
+   (org-roam-db-autosync-mode))
 
 (require 'org-roam-protocol)
 
@@ -59,7 +65,7 @@
 
 (require 'org-attach)
 (setq org-link-abbrev-alist '(("fast" . "./image/")))
-(setq org-link-abbrev-alist '(("file" . org-attach-expand-link)))
+;; (setq org-link-abbrev-alist '(("file" . org-attach-expand-link)))
 
 
 ;; Key Configuration for org

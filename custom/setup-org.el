@@ -35,6 +35,11 @@
    (org-roam-completion-everywhere t)
    ;; (org-roam-graph-executable "/usr/local/bin/dot")
    ;; (org-roam-graph-viewer "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome")
+   (org-roam-capture-templates
+    '(("d" "default" plain
+       "%?"
+       :if-new (file+head "%<%Y-%m-%d>-${slug}.org" "#+LATEX_HEADER: \\usepackage{kotex}\n#+OPTIONS: \\n:t\n#+title: ${title}\n")
+       :unnarrowed t)))
    :bind (("C-c n l" . org-roam-buffer-toggle)
           ("C-c n f" . org-roam-node-find)
           ("C-c n i" . org-roam-node-insert)
